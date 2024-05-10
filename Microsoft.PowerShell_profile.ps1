@@ -1,4 +1,4 @@
-oh-my-posh init pwsh --config '~/.config/themes/gruvbox.omp.json' | Invoke-Expression
+oh-my-posh init pwsh --config "~/Documents/PowerShell/gruvbox.omp.json" | Invoke-Expression
 
 Set-Alias -Name c -Value clear
 Set-Alias -Name xa -Value ls
