@@ -2,6 +2,8 @@ oh-my-posh init pwsh --config "~/Documents/PowerShell/gruvbox.omp.json" | Invoke
 
 Set-Alias -Name c -Value clear
 Set-Alias -Name xa -Value ls
+Set-Alias -Name py -Value python3
+Set-Alias -Name python -Value python3
 
 function gs {git status $args}
 function ga {git add $args}
