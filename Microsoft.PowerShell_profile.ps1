@@ -13,3 +13,5 @@ function gc {git commit $args}
 function gcm {git commit -m $args}
 function gb {git branch $args}
 function .. {cd ..}
+function ~ {cd ~}
+function which {param($Exe) (Get-Command $Exe).path} 
