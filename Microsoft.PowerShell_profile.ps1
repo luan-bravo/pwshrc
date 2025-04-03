@@ -20,11 +20,24 @@ function xta {eza -l -h -n -s='type' --icons -a -T $args}
 
 function gs {git status $args}
 function ga {git add $args}
-function gaa {git add .}
-function gap {git add -p .}
+    function gaa {git add .}
+    function gap {git add -p $args}
 function gc {git commit $args}
-function gcm {git commit -m $args}
+    function gcv {git commit -v $args}
+    function gcm {git commit -m $args}
+function grs {git restore $args}
+    function grst {git restore --staged $args}
+function gp {git push $args}
+function gl {git pull $args}
+    function glr {git pull --rebase $args}
+    function glra {git pull --rebase $args}
 function gb {git branch $args}
+function glog {git log --oneline --all --graph $args}
+    function gloga {git log --oneline --all --graph $args}
+function gsw {git switch $args}
+    function gswc {git switch -c $args}
+
 function .. {cd ..}
 function ~ {cd ~}
+
 function which {param($Exe) (Get-Command $Exe).path}
