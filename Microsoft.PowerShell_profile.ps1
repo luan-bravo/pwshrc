@@ -2,11 +2,21 @@ oh-my-posh init pwsh --config "~/Documents/PowerShell/gruvbox.omp.json" | Invoke
 
 Set-Alias -Name c -Value clear
 Set-Alias -Name q -Value exit
-Set-Alias -Name xa -Value ls
+
+Set-Alias -Name v -Value nvim
+Set-Alias -Name vi -Value nvim
+
 Set-Alias -Name py -Value python3
 Set-Alias -Name python -Value python3
 Set-Alias -Name ino -Value arduino-cli
 Set-Alias -Name espt -Value "python -m esptool"
+
+function x {eza -l -h -n -s='type' --icons $args}
+    function ll {eza -l -h -n -s='type' --icons $args}
+function xa {eza -l -h -n -s='type' --icons -a $args}
+    function l {eza -l -h -n -s='type' --icons -a $args}
+function xt {eza -l -h -n -s='type' --icons -T $args}
+function xta {eza -l -h -n -s='type' --icons -a -T $args}
 
 function gs {git status $args}
 function ga {git add $args}
