@@ -41,3 +41,4 @@ function .. {cd ..}
 function ~ {cd ~}
 
 function which {param($Exe) (Get-Command $Exe).path}
+Invoke-Expression (& { (zoxide init powershell | Out-String) })
