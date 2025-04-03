@@ -18,6 +18,7 @@ function xa {eza -l -h -n -s='type' --icons -a $args}
 function xt {eza -l -h -n -s='type' --icons -T $args}
 function xta {eza -l -h -n -s='type' --icons -a -T $args}
 
+Remove-Item -Path Alias:g* -Force # Remove default aliases to allow overwriting
 function gs {git status $args}
 function ga {git add $args}
     function gaa {git add .}
