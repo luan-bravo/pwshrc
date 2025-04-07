@@ -25,7 +25,7 @@ function gd {git diff $args}
 function gds {git diff --staged $args}
 
 function ga {git add $args}
-function gaa {git add -a $args}
+function gaa {git add -A $args}
 function gap {git add -p $args}
 
 function gc {git commit $args}
