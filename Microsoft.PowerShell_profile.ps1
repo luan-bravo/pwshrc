@@ -1,5 +1,6 @@
-oh-my-posh init pwsh --config "~/Documents/PowerShell/gruvbox.omp.json" | Invoke-Expression
-
+#############
+## ALIASES ##
+#############
 Set-Alias -Name c -Value clear
 Set-Alias -Name q -Value exit
 
@@ -57,5 +58,46 @@ function gswc {git switch -c $args}
 function .. {cd ..}
 function ~ {cd ~}
 
+###############
+## FUNCTIONS ##
+###############
 function which {param($Exe) (Get-Command $Exe).path}
+
+function addtopath {
+    [CmdletBinding()]
+    param (
+        [Parameter(Mandatory=$true, Position=0)]
+        [string]$Path
+    )
+
+    try {
+        # Check if the input is a valid directory path
+        if (-not (Test-Path -Path $Path -PathType Container)) {
+            throw "Error: '$Path' is not a valid directory or does not exist."
+        }
+
+        # Get the current user PATH
+        $currentPath = [System.Environment]::GetEnvironmentVariable("Path", "User")
+
+        # Normalize the input path for comparison (resolve to absolute path)
+        $resolvedPath = (Resolve-Path -Path $Path).Path
+
+        # Check if the resolved path is in the current PATH
+        if ($currentPath -like "*$resolvedPath*") {
+            Write-Output "Directory already in `$Env:Path"
+        } else {
+            # Add the directory to the user PATH
+            [System.Environment]::SetEnvironmentVariable("Path", "$currentPath;$resolvedPath", "User")
+            Write-Output "Directory '$resolvedPath' added to `$Env:Path"
+        }
+    }
+    catch {
+        Write-Error $_.Exception.Message
+    }
+}
+
+##############
+## SOURCING ##
+##############
+oh-my-posh init pwsh --config "~/Documents/PowerShell/gruvbox.omp.json" | Invoke-Expression
 Invoke-Expression (& { (zoxide init powershell | Out-String) })
